@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		Scanner s = new Scanner(System.in);
+		int i,j,n,p=1,nx,ny=0;
+		n = s.nextInt();
+		int arr[][] = new int[n][n];
+		j = n/2;
+		arr[0][j] = p++;
+		nx = j;
+		
+		for(i=1;i<n*n;i++){
+			if((p-1)%n==0){
+				ny=ny+1==n?0:ny+1;
+				arr[ny][nx]=p;	
+			}
+			else{
+				ny=ny-1<0?n-1:ny-1;
+				nx=nx+1==n?0:nx+1;
+				arr[ny][nx]=p;
+			}
+			p++;
+		}
+		for(i=0;i<n;i++,System.out.println(""))
+			for(j=0;j<n;System.out.printf("%d ",arr[i][j++]));
+	}
+}
